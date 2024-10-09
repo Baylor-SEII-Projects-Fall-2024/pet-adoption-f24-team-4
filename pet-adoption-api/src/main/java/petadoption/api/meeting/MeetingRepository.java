@@ -1,2 +1,6 @@
-package petadoption.api.meeting;public interface MeetingRepository {
+package petadoption.api.meeting;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MeetingRepository extends JpaRepository<Meeting,Long> {
 }

@@ -27,11 +27,11 @@ public class Meeting {
     LocalDateTime date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "USER_ID")
+    @JoinColumn(name = "USER_ID")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "adoption_id", referencedColumnName = "ADOPTION_ID")
+    @JoinColumn(name = "ADOPTION_ID")
     private AdoptionCenter center;
 
 

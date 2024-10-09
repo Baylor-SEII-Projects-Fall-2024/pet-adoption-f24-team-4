@@ -15,9 +15,9 @@ public class MeetingService {
     }
 
     public List<Meeting> findMeetingsByUserID(Long userId){
-        return meetingRepository.findByUserId(userId);
+        return meetingRepository.findByUser_Id(userId);
     }
     public List<Meeting> findMeetingsByCenterID(Long adoptionID){
-        return meetingRepository.findByAdoptionID(adoptionID);
+        return meetingRepository.findByCenter_adoptionID(adoptionID);
     }
 }

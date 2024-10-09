@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface MeetingRepository extends JpaRepository<Meeting,Long> {
 
-    List<Meeting> findByUserId(Long userId);
-    List<Meeting> findByAdoptionID(Long adoptionID);
+
+    List<Meeting> findByUser_Id(Long userId);
+
+
+    List<Meeting> findByCenter_adoptionID(Long adoptionId);
 }

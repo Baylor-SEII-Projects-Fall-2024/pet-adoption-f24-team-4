@@ -23,15 +23,15 @@ public class Meeting {
     private Long id;
 
     @Column(name = "MEET_DATE")
-    @DateTimeFormat("dd/MM/YYYY")
+    @DateTimeFormat(pattern = "dd/MM/YYYY")
     LocalDateTime date;
 
-    @ManyToOne
-    @Column(name = "USER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "USER_ID")
     private User user;
 
-    @ManyToOne
-    @Column(name = "ADOPTION_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "adoption_id", referencedColumnName = "ADOPTION_ID")
     private AdoptionCenter center;
 
 

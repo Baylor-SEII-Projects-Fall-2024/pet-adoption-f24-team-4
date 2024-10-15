@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import petadoption.api.adoptionCenter.AdoptionCenter;
 import petadoption.api.pet.Pet;
+import petadoption.api.user.User;
+
+import java.util.Date;
 
 @Data
 @Entity
@@ -20,9 +23,15 @@ public class Meeting {
     @Column(name = "meetingID")
     Long id;
 
-
+    @Column(name = "meetingDate")
+    Date date;
 
     @ManyToOne
-    @JoinColumn(name = "adoptionID", referencedColumnName = "adoptionID", nullable = true)
-    private AdoptionCenter center;
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID", nullable = true)
+    private User user;
+
+    // Pet contains adoption center info
+    @ManyToOne
+    @JoinColumn(name = "petID", referencedColumnName = "petID", nullable = true)
+    private Pet pet;
 }

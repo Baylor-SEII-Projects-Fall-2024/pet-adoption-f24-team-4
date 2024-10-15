@@ -13,7 +13,6 @@ import java.util.Date;
 @Table(name = Meeting.TABLE_NAME)
 public class Meeting {
     public static final String TABLE_NAME = "Meetings";
-
     @Id
     @GeneratedValue(generator = TABLE_NAME + "_GENERATOR")
     @SequenceGenerator(
@@ -44,7 +43,7 @@ public class Meeting {
     public void setDate(Date date) { this.date = date; }
 
     public User getUser() { return user; }
-    
+
     public void setUser(User user) { this.user = user; }
 
     public Pet getPet() { return pet; }

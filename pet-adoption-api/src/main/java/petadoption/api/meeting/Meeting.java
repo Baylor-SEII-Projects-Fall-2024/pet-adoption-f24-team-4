@@ -34,4 +34,20 @@ public class Meeting {
     @ManyToOne
     @JoinColumn(name = "petID", referencedColumnName = "petID", nullable = true)
     private Pet pet;
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
+
+    public Date getDate() { return date; }
+
+    public void setDate(Date date) { this.date = date; }
+
+    public User getUser() { return user; }
+    
+    public void setUser(User user) { this.user = user; }
+
+    public Pet getPet() { return pet; }
+
+    public void setPet(Pet pet) { this.pet = pet; }
 }

@@ -15,6 +15,7 @@ export default function AddPet() {
   const [furType, setFur] = useState('');
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState('');
+  const [petPicture, setPetPicture] = useState({ name: '', type: '', imageData: '' }); 
   const router = useRouter();
   const { adoptionID, email } = router.query;
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -50,6 +51,9 @@ export default function AddPet() {
    const handleBack = () => {
     router.push(`/adoptionHome?email=${email}`);
   };
+
+
+
 
  return (
     <Box
@@ -150,7 +154,6 @@ export default function AddPet() {
                 <MenuItem value="Dog">Dog</MenuItem>
               </Select>
             </FormControl>
-
             <Button
               type="submit"
               variant="contained"

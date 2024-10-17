@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import petadoption.api.Utility.Image;
 import petadoption.api.adoptionCenter.AdoptionCenter;
 import petadoption.api.adoptionCenter.AdoptionCenterService;
 import petadoption.api.pet.Pet;
@@ -13,6 +14,7 @@ import petadoption.api.pet.PetService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Base64;
 
 @Log4j2
 @RestController
@@ -34,6 +36,7 @@ public class PetEndpoint {
             pet.setWeight(petRequest.getWeight());
             pet.setFurType(petRequest.getFurType());
             pet.setCenter(adoptionCenter.get());
+
 
             petService.savePet(pet, adoptionCenter.get().getAdoptionID());
             log.info("Pet registered to adoption center " + pet.getCenter().getCenterName());

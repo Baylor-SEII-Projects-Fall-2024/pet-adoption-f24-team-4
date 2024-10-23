@@ -8,6 +8,7 @@ import petadoption.api.user.User;
 import petadoption.api.user.UserRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,23 +29,28 @@ public class MeetingService {
         return repository.findById(meetingID);
     }
 
-    public Meeting saveMeeting(Meeting meeting, Long petID, Long userID) {
-        if(petID != null && userID != null) {
-            Optional<Pet> pets = petRepository.findById(petID);
-            if (pets.isPresent()) {
-                Optional<User> users = userRepository.findById(userID);
-                if (users.isPresent()) {
-                    meeting.setPet(pets.get());
-                    meeting.setUser(users.get());
-                } else {
-                    throw new RuntimeException("User was not found.");
-                }
-            } else {
-                throw new RuntimeException("Pet was not found.");
+    public Meeting createAndSaveMeeting(Long petID, Long userID, Date date) throws Exception {
+        Optional<Pet> pet = petRepository.findById(petID);
+        Optional<User> user = userRepository.findById(userID);
+        if(pet.isPresent()){
+            if(user.isPresent()){
+                Meeting meeting = new Meeting(pet.get(), user.get(), date);
+                saveMeeting(meeting);
+                return meeting;
             }
-
+            else{
+                throw new Exception("Unable to find user.");
+            }
         }
-        return repository.save(meeting);
+        else{
+            throw new Exception("Unable to find pet.");
+        }
+    }
+
+
+    public Meeting saveMeeting(Meeting meeting) {
+        repository.save(meeting);
+        return meeting;
     }
 
     public List<Meeting> getAllMeetings() { return repository.findAll(); }

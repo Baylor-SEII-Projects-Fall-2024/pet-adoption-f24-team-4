@@ -7,6 +7,7 @@ import petadoption.api.pet.Pet;
 import petadoption.api.user.User;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Data
 @Entity
@@ -34,9 +35,17 @@ public class Meeting {
     @JoinColumn(name = "petID", referencedColumnName = "petID", nullable = true)
     private Pet pet;
 
-    public Long getId() { return id; }
+    public Meeting(Pet pet, User user, Date date) {
+        setPet(pet);
+        setDate(date);
+        setUser(user);
+    }
 
-    public void setId(Long id) { this.id = id; }
+    public Meeting() { }
+
+    public Long getId() { return id; }
+    public void setId(Long id){ this.id = id; }
+
 
     public Date getDate() { return date; }
 

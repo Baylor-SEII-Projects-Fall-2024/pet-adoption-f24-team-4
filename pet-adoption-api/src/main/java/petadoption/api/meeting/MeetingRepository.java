@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface MeetingRepository extends JpaRepository<Meeting, Long> {
-    List<Meeting> findByPet_adoptionID(long adoptionID);
-    List<Meeting> findByUser_userID(long userID);
+    Meeting findByPet_id(long petID);
+    List<Meeting> findByUser_id(long userID);
 }

@@ -7,6 +7,7 @@ import petadoption.api.pet.PetRepository;
 import petadoption.api.user.User;
 import petadoption.api.user.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,11 +50,18 @@ public class MeetingService {
     public List<Meeting> getAllMeetings() { return repository.findAll(); }
 
     public List<Meeting> getAdoptionCenterMeetings(long adoptionID) {
-        return repository.findByPet_adoptionID(adoptionID);
+
+        List<Pet> pets = petRepository.findByCenter_adoptionID(adoptionID);
+
+        List<Meeting> meetings = new ArrayList<>();
+        for(Pet pet : pets){
+            meetings.add(repository.findByPet_id(pet.getId()));
+        }
+        return meetings;
     }
 
     public List<Meeting> getUserMeetings(long userID) {
-        return repository.findByUser_userID(userID);
+        return repository.findByUser_id(userID);
     }
 
     public void deleteMeeting(Long id) { repository.deleteById(id); }

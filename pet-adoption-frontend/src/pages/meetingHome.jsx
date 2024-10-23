@@ -2,66 +2,66 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Box, Card, CardContent, Typography } from '@mui/material';
 
-export default function AdoptionHome() {
-    const [data, setData] = useState('');
+export default function MeetingHome() {
+    const [meetings, setMeetings] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch("http://localhost:8080/MeetingHome");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch meetings");
+                if (response.ok) {
+                    const data = await response.json();
+                    setMeetings(data);
+                } else {
+                    throw new Error('Failed to fetch meetings');
                 }
-                const result = await response.text();
-                setData(result);
             } catch (error) {
-                console.error('Error fetching meetings:', error);
+                setError(error.message);
+            } finally {
+                setLoading(false);
             }
         };
 
-        fetchData();
+        fetchMeetings();
     }, []);
 
+    if (loading) return <p>Loading meetings...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     // Handle cancelling a meeting
-    const handleCancel = async (meetingId) => {
-        try {
-            const response = await fetch(`http://localhost:8080/MeetingHome/${meetingId}`, {
-                method: 'DELETE'
-            });
-            if (!response.ok) {
-                throw new Error("Failed to cancel the meeting");
-            }
-            // Remove the cancelled meeting from the UI
-            setMeetings(meetings.filter(meeting => meeting.id !== meetingId));
-        } catch (error) {
-            console.error('Error cancelling meeting:', error);
-        }
-    };
+    
 
     return (
-        <Box>
-            <Head>
-                <title>Meeting Home</title>
-            </Head>
-            <Typography variant="h3">Your Meetings</Typography>
-            <Card>
-                <CardContent>
-                    {meetings.length > 0 ? (
-                        <List>
-                            {meetings.map(meeting => (
-                                <ListItem key={meeting.id}>
-                                    <ListItemText primary={`Meeting with ${meeting.name}`} secondary={`Date: ${meeting.date}`} />
-                                    <Button variant="contained" color="secondary" onClick={() => handleCancel(meeting.id)}>
-                                        Cancel
-                                    </Button>
-                                </ListItem>
-                            ))}
-                        </List>
+        <div>
+            <h2>All Meetings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Meeting ID</th>
+                        <th>Pet Name</th>
+                        <th>User Name</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {meetings.length === 0 ? (
+                        <tr>
+                            <td colSpan="4">No meetings available</td>
+                        </tr>
                     ) : (
-                        <Typography>No meetings scheduled.</Typography>
+                        meetings.map((meeting) => (
+                            <tr key={meeting.id}>
+                                <td>{meeting.id}</td>
+                                <td>{meeting.pet ? meeting.pet.name : 'N/A'}</td>
+                                <td>{meeting.user ? meeting.user.name : 'N/A'}</td>
+                                <td>{new Date(meeting.date).toLocaleDateString()}</td>
+                            </tr>
+                        ))
                     )}
-                </CardContent>
-            </Card>
-        </Box>
+                </tbody>
+            </table>
+        </div>
     );
 }

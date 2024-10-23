@@ -153,6 +153,21 @@ export default function AdoptionHome() {
     });
   };
 
+  const handleModifyMeeting = () => {
+    const adoptionID = user.center.adoptionID;
+    router.push({
+      pathname: '/modifyMeeting',
+      query: { adoptionID, email },
+    })
+  }
+  const handleAddMeeting = () => {
+    const adoptionID = user.center.adoptionID;
+    router.push({
+      pathname: '/addMeeting',
+      query: { adoptionID, email },
+    });
+  }
+
   return (
     <main>
       <AppBar position="static" sx={{ backgroundColor: '#1976d2' }}>

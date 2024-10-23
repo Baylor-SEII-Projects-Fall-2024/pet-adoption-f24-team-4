@@ -43,7 +43,7 @@ public class MeetingEndpoint {
     // get a meeting by its ID
     @GetMapping("/{id}")
     public void getMeeting(@PathVariable Long id) {
-        meetingService.getMeetingById(id); 
+        meetingService.getMeetingById(id);
     }
 
     @DeleteMapping("/deleteMeeting")
@@ -71,7 +71,7 @@ public class MeetingEndpoint {
     }
 
     @PutMapping("/updateMeeting")
-    public ResponseEntity<Meeting> updateEvent(@RequestBody Meeting request) {
+    public ResponseEntity<Meeting> updateMeeting(@RequestBody Meeting request) {
         try {
             Optional<Meeting> result = meetingService.getMeetingById(request.getId());
             if (result.isEmpty()) {

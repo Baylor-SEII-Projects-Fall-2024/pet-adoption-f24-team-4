@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Card, CardContent, Typography, CircularProgress, Alert, Grid } from '@mui/material';
+import { Box, Card, CardContent, Typography, CircularProgress, Alert, Grid,Button } from '@mui/material';
 import { useRouter } from 'next/router';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function ViewCenters() {
     const [adoptionCenters, setAdoptionCenters] = useState([]);
@@ -43,6 +44,14 @@ export default function ViewCenters() {
 
     return (
         <Box sx={{ padding: 4, backgroundColor: '#f4f6f8' }}> {/* Light greyish background for contrast */}
+            <Button
+                startIcon={<ArrowBackIcon />}
+                variant="outlined"
+                sx={{ marginBottom: 2, color: '#1976d2', borderColor: '#1976d2' }}
+                onClick={() => router.push('/')}
+            >
+                Back to Home
+            </Button>
            
             <Typography variant="h4" gutterBottom sx={{ color: '#000', marginBottom: 3, fontWeight: 'bold'}}>
                 View Adoption Centers

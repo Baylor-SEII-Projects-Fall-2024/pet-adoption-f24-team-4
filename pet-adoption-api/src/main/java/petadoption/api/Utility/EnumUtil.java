@@ -42,8 +42,16 @@ public class EnumUtil {
         return Health.valueOf(convertToEnumFormat(healthStr));
     }
 
+    public static Sex mapStringToSex(String sexStr) {
+        return Sex.valueOf(convertToEnumFormat(sexStr));
+    }
+
+    public static SpayedNeutered mapStringToSpayedNeutered(String spayedStr) {
+        return SpayedNeutered.valueOf(convertToEnumFormat(spayedStr));
+    }
     // Helper method to format strings to match enum values
     private static String convertToEnumFormat(String str) {
         return str.trim().toUpperCase().replace(" ", "_");
     }
+
 }

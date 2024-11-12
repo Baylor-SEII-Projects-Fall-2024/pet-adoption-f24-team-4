@@ -95,7 +95,9 @@ public enum CatBreed implements AnimalBreed {
     TONKINESE("Tonkinese"),
     TOYBOB("Toybob"),
     TURKISH_ANGORA("Turkish Angora"),
-    TURKISH_VAN("Turkish Van");
+    TURKISH_VAN("Turkish Van"),
+    TOYGER("Toyger"),
+    TUXEDO("TUXEDO");
 
 
     @Getter

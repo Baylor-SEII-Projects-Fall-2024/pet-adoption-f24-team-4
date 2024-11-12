@@ -144,7 +144,8 @@ public class EventEndpoint {
         }
         e.setDescription(request.getDescription());
         e.setLocation(request.getLocation());
-        e.setStartDateTime(request.getStartDateTime());
         e.setEndDateTime(request.getEndDateTime());
+        e.setStartDateTime(request.getStartDateTime());
+
     }
 }

@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Autocomplete, Box, MenuItem, Grid, Typography, Paper } from '@mui/material';
+import { TextField, Button, Autocomplete, Box, MenuItem, Grid, Typography, Paper, Snackbar, Alert } from '@mui/material';
 import { useRouter } from 'next/router';
 
 const AddPet = () => {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const router = useRouter();
-    const { adoptionID } = router.query;
+    const { adoptionID, email } = router.query;
     const [petData, setPetData] = useState({
         name: '',
         species: '',
         weight: '',
         coatLength: '',
         furType: '',
-        furColor: '',
+        furColor: [],
         dogBreed: [],
         catBreed: [],
         petSize: '',
         age: '',
         temperament: [],
         healthStatus: '',
+        sex: '',
+        spayedNeutered: '',
         adoptionId: null,
     });
 
@@ -32,7 +34,11 @@ const AddPet = () => {
         size: [],
         temperament: [],
         healthStatus: [],
+        sex: [],
+        spayedNeutered: [],
     });
+
+    const [openSnackbar, setOpenSnackbar] = useState(false); // State for snackbar visibility
 
     // Fetch the enum options from the backend
     useEffect(() => {
@@ -54,29 +60,25 @@ const AddPet = () => {
         }
     }, [adoptionID]);
 
-    // Handle input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setPetData(prevData => ({ ...prevData, [name]: value }));
     };
 
-    // Handle array inputs (for tags like dogBreed, catBreed, and temperament)
     const handleArrayChange = (name, value) => {
         setPetData(prevData => ({ ...prevData, [name]: value }));
     };
 
-    // Handle species change (show breeds based on species)
     const handleSpeciesChange = (e) => {
         const { value } = e.target;
         setPetData(prevData => ({
             ...prevData,
             species: value,
-            dogBreed: [], // Reset dog breed when species changes
-            catBreed: [], // Reset cat breed when species changes
+            dogBreed: [], 
+            catBreed: [], 
         }));
     };
 
-    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
@@ -91,9 +93,34 @@ const AddPet = () => {
             .then(response => response.json())
             .then(data => {
                 console.log('Pet added:', data);
-                // Clear the form or add any success feedback here
+                setOpenSnackbar(true); // Show confirmation message
+                setPetData({
+                    name: '',
+                    species: '',
+                    weight: '',
+                    coatLength: '',
+                    furType: '',
+                    furColor: [],
+                    dogBreed: [],
+                    catBreed: [],
+                    petSize: '',
+                    age: '',
+                    temperament: [],
+                    healthStatus: '',
+                    sex: '',
+                    spayedNeutered: '',
+                    adoptionId: adoptionID,
+                }); // Clear the form
             })
             .catch(error => console.error('Error adding pet:', error));
+    };
+
+    const handleBack = () => {
+      router.push(`/adoptionHome?email=${email}`);
+    };
+
+    const handleCloseSnackbar = () => {
+        setOpenSnackbar(false);
     };
 
     return (
@@ -185,7 +212,6 @@ const AddPet = () => {
                         </TextField>
                     </Grid>
 
-                    {/* Conditionally render Dog Breed or Cat Breed based on species */}
                     {petData.species === 'Dog' && (
                         <Grid item xs={12}>
                             <Autocomplete
@@ -252,15 +278,42 @@ const AddPet = () => {
                         </TextField>
                     </Grid>
                     <Grid item xs={6}>
+                        <Autocomplete
+                            multiple
+                            options={options.furColor}
+                            getOptionLabel={(option) => option}
+                            onChange={(e, newValue) => handleArrayChange('furColor', newValue)}
+                            renderInput={(params) => <TextField {...params} label="Fur Color" fullWidth />}
+                        />
+                    </Grid>
+
+                    <Grid item xs={6}>
                         <TextField
                             select
-                            label="Fur Color"
-                            name="furColor"
-                            value={petData.furColor}
+                            label="Sex"
+                            name="sex"
+                            value={petData.sex}
                             onChange={handleChange}
                             fullWidth
                         >
-                            {options.furColor.map((option) => (
+                            {options.sex.map((option) => (
+                                <MenuItem key={option} value={option}>
+                                    {option}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                    </Grid>
+
+                    <Grid item xs={6}>
+                        <TextField
+                            select
+                            label="Spayed/Neutered"
+                            name="spayedNeutered"
+                            value={petData.spayedNeutered}
+                            onChange={handleChange}
+                            fullWidth
+                        >
+                            {options.spayedNeutered.map((option) => (
                                 <MenuItem key={option} value={option}>
                                     {option}
                                 </MenuItem>
@@ -272,6 +325,20 @@ const AddPet = () => {
                     Add Pet
                 </Button>
             </Box>
+            <Button variant="outlined" sx={{ mt: 2 }} onClick={handleBack}>
+              Back
+            </Button>
+            
+            <Snackbar
+                open={openSnackbar}
+                autoHideDuration={6000}
+                onClose={handleCloseSnackbar}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            >
+                <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+                    Pet added successfully!
+                </Alert>
+            </Snackbar>
         </Paper>
     );
 };

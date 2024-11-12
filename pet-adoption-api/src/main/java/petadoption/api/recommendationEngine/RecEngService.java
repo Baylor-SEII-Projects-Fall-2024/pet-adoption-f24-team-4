@@ -11,9 +11,6 @@ import java.util.List;
 public class RecEngService {
     @Autowired
     private PetRepository petRepository;
-    private static final long DEFAULT_NUM_PETS = 500;
 
-    public List<Pet> getAllPets() { return petRepository.findAll(); }
-    public List<Pet> getSamplePets(long numPets) { return petRepository.getRandom(numPets); }
-    public List<Pet> getSamplePets() { return petRepository.getRandom(DEFAULT_NUM_PETS); }
+    private RecommendationEngine recommendationEngine;
 }

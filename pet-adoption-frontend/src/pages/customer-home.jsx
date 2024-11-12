@@ -15,24 +15,18 @@ export default function CustomerHomePage() {
   const [error, setError] = useState(null);
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleLoginInformation = () => {
-    // Retrieve the token from local storage
-    const token = localStorage.getItem('token'); // Get the token from local storage
-
-    // Check if the token exists before redirecting
+    const token = localStorage.getItem('token');
     if (token) {
-        // Redirect to the Profile page, only passing the email
-        router.push(`/Profile?email=${email}`);
+      router.push(`/Profile?email=${email}`);
     } else {
-        console.error('No token found in local storage.'); // Handle the case where no token is found
-        // Optionally, you could show an error message to the user or redirect them to the login page
+      console.error('No token found in local storage.');
     }
-};
+  };
 
   const handleCloseMenu = () => {
     setAnchorEl(null);
@@ -45,7 +39,7 @@ export default function CustomerHomePage() {
 
   const logoutAction = () => {
     setUser(null);
-    localStorage.removeItem('token'); // Remove the token from local storage on logout
+    localStorage.removeItem('token');
     router.push(`/loginPage`);
   };
 
@@ -67,12 +61,12 @@ export default function CustomerHomePage() {
       formData.append('image', profilePictureFile);
 
       try {
-        const token = localStorage.getItem('token'); // Get the token from local storage
+        const token = localStorage.getItem('token');
         const response = await fetch(`${apiUrl}/user/profile-image/${email}`, {
           method: 'POST',
           body: formData,
           headers: {
-            'Authorization': `Bearer ${token}` // Add token to headers
+            'Authorization': `Bearer ${token}`
           }
         });
 
@@ -100,16 +94,13 @@ export default function CustomerHomePage() {
     const fetchUser = async () => {
       if (email) {
         setLoading(true);
-        console.log("Fetching user with email:", email);
-        
         try {
           const token = localStorage.getItem('token');
           const response = await fetch(`${apiUrl}/users/email/${encodeURIComponent(email)}`, {
             headers: {
-              'Authorization': `Bearer ${token}` // Add token to headers
+              'Authorization': `Bearer ${token}`
             }
           });
-          console.log('Authorization'+ `Bearer ${token}`);
           if (!response.ok) {
             if (response.status === 404) {
               setError('User not found.');
@@ -119,7 +110,6 @@ export default function CustomerHomePage() {
           }
 
           const data = await response.json();
-          console.log("Fetched user data:", data);
           setUser(data);
 
           if (data.profilePicture && data.profilePicture.imageData) {
@@ -142,21 +132,32 @@ export default function CustomerHomePage() {
   };
 
   const handleStartMatching = () => {
-    // Retrieve the token from local storage
-    const token = localStorage.getItem('token'); // Get the token from local storage
-
-    // Check if the token exists before redirecting
+    const token = localStorage.getItem('token');
     if (token) {
-        // Store the token in session storage or a context if needed
-        // For example: sessionStorage.setItem('token', token);
-        
-        // Redirect to the recommendation engine page with the email in the URL
-        router.push(`/recommendationEngine?email=${email}`);
+      router.push(`/recommendationEngine?email=${email}`);
     } else {
-        console.error('No token found in local storage.'); // Handle the case where no token is found
-        // Optionally, redirect to the login page or show an error message
+      console.error('No token found in local storage.');
     }
-};
+  };
+
+  const handleEditPreferences = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      router.push(`/EditPreferences?email=${email}&userID=${user.id}`);
+    }
+  };
+
+  const handleMessage = () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      router.push(`/message?email=${email}&userID=${user.id}`);
+    }
+  };
+
+  // Function to route to view events page
+  const handleViewEvents = () => {
+    router.push(`/viewEvents?email=${email}`);
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -169,21 +170,6 @@ export default function CustomerHomePage() {
   if (!user) {
     return <div>User not found.</div>;
   }
-  const handleEditPreferences = () => {
-    const token = localStorage.getItem('token'); 
-    if(token){
-      router.push(`/EditPreferences?email=${email}&userID=${user.id}`)
-    }
-
-  }
-    const handleMessage = () => {
-      const token = localStorage.getItem('token'); 
-      if(token){
-        router.push(`/message?email=${email}&userID=${user.id}`)
-      }
-
-  }
-
 
   return (
     <main>
@@ -209,22 +195,42 @@ export default function CustomerHomePage() {
         <Typography variant="body1" color="text.secondary">
           Check out the home page!
         </Typography>
+
+        {/* Message Box */}
         <Box sx={{
-        position: 'absolute',
-        top: 100,
-        left: 20,
-        width: 300,
-        padding: 2,
-        boxShadow: 3,
-        borderRadius: 2,
-        textAlign: 'center',
-        backgroundColor: 'white',
-      }}>
-        <Typography variant="h6" gutterBottom>Check out your messages!</Typography>
-        <Button variant="contained" color="primary" onClick={handleMessage}>
-          Send/View Messages
-        </Button>
-      </Box>
+          position: 'absolute',
+          top: 100,
+          left: 20,
+          width: 300,
+          padding: 2,
+          boxShadow: 3,
+          borderRadius: 2,
+          textAlign: 'center',
+          backgroundColor: 'white',
+        }}>
+          <Typography variant="h6" gutterBottom>Check out your messages!</Typography>
+          <Button variant="contained" color="primary" onClick={handleMessage}>
+            Send/View Messages
+          </Button>
+        </Box>
+
+        {/* New Events Box */}
+        <Box sx={{
+          position: 'absolute',
+          top: 220, // Positioned below the message box
+          left: 20,
+          width: 300,
+          padding: 2,
+          boxShadow: 3,
+          borderRadius: 2,
+          textAlign: 'center',
+          backgroundColor: 'white',
+        }}>
+          <Typography variant="h6" gutterBottom>Check out events near you!</Typography>
+          <Button variant="contained" color="primary" onClick={handleViewEvents}>
+            View Events
+          </Button>
+        </Box>
       </Stack>
 
       <Menu

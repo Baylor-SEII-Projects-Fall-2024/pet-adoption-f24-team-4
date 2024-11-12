@@ -10,6 +10,22 @@ import petadoption.api.user.User;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Rafe Loya
+ *
+ * @see User
+ * @see Species
+ * @see CatBreed
+ * @see DogBreed
+ * @see Size
+ * @see FurColor
+ * @see FurType
+ * @see CoatLength
+ * @see Temperament
+ * @see Health
+ * @see SpayedNeutered
+ * @see Sex
+ */
 @Getter
 @Entity
 @Table(name = UserPreferences.TABLE_NAME)
@@ -29,75 +45,101 @@ public class UserPreferences {
     @OneToOne(optional = false, mappedBy = "userPreferences")
     private User user;
 
+    @Getter
     @ElementCollection
     @MapKeyColumn(name = "species")
     @Column(name = "species_rating")
     @CollectionTable(name = "user_preferences_species",
             joinColumns=@JoinColumn(name = "user_preferences_id"))
-    Map<Species, Double> species;
+    private Map<Species, Double> species;
 
+    @Getter
     @ElementCollection
     @MapKeyColumn(name = "cat_breed")
     @Column(name = "cat_breed_rating")
     @CollectionTable(name = "user_preferences_cat_breed",
             joinColumns=@JoinColumn(name = "user_preferences_id"))
-    Map<CatBreed, Double> catBreed;
+    private Map<CatBreed, Double> catBreed;
 
+    @Getter
     @ElementCollection
     @MapKeyColumn(name = "dog_breed")
     @Column(name = "dog_breed_rating")
     @CollectionTable(name = "user_preferences_dog_breed",
             joinColumns=@JoinColumn(name = "user_preferences_id"))
-    Map<DogBreed, Double> dogBreed;
+    private Map<DogBreed, Double> dogBreed;
 
+    @Getter
     @ElementCollection
     @MapKeyColumn(name = "size")
     @Column(name = "size_rating")
     @CollectionTable(name = "user_preferences_size",
             joinColumns=@JoinColumn(name = "user_preferences_id"))
-    Map<Size, Double> size;
+    private Map<Size, Double> size;
 
+    @Getter
     @ElementCollection
     @MapKeyColumn(name = "fur_color")
     @Column(name = "fur_color_rating")
     @CollectionTable(name = "user_preferences_fur_color",
             joinColumns=@JoinColumn(name = "user_preferences_id"))
-    Map<FurColor, Double> furColor;
+    private Map<FurColor, Double> furColor;
 
+    @Getter
     @ElementCollection
     @MapKeyColumn(name = "fur_type")
     @Column(name = "fur_type_rating")
     @CollectionTable(name = "user_preferences_fur_type",
             joinColumns=@JoinColumn(name = "user_preferences_id"))
-    Map<FurType, Double> furType;
+    private Map<FurType, Double> furType;
 
+    @Getter
     @ElementCollection
     @MapKeyColumn(name = "coat_length")
     @Column(name = "coat_length_rating")
     @CollectionTable(name = "user_preferences_coat_length",
             joinColumns=@JoinColumn(name = "user_preferences_id"))
-    Map<CoatLength, Double> coatLength;
+    private Map<CoatLength, Double> coatLength;
 
+    @Getter
     @ElementCollection
     @MapKeyColumn(name = "age")
     @Column(name = "age_rating")
     @CollectionTable(name = "user_preferences_age",
             joinColumns=@JoinColumn(name = "user_preferences_id"))
-    Map<Integer, Double> age;
+    private Map<Integer, Double> age;
 
+    @Getter
     @ElementCollection
     @MapKeyColumn(name = "temperament")
     @Column(name = "temperament_rating")
     @CollectionTable(name = "user_preferences_temperament",
             joinColumns=@JoinColumn(name = "user_preferences_id"))
-    Map<Temperament, Double> temperament;
+    private Map<Temperament, Double> temperament;
 
+    @Getter
     @ElementCollection
     @MapKeyColumn(name = "health")
     @Column(name = "health_rating")
     @CollectionTable(name = "user_preferences_health",
             joinColumns=@JoinColumn(name = "user_preferences_id"))
-    Map<Health, Double> health;
+    private Map<Health, Double> health;
+
+    @Getter
+    @ElementCollection
+    @MapKeyColumn(name = "spayed_neutered")
+    @Column(name = "spayed_neutered_rating")
+    @CollectionTable(name = "user_preferences_spayed_neutered",
+            joinColumns=@JoinColumn(name = "user_preferences_id"))
+    private Map<SpayedNeutered, Double> spayedNeutered;
+
+    @Getter
+    @ElementCollection
+    @MapKeyColumn(name = "sex")
+    @Column(name = "sex_rating")
+    @CollectionTable(name = "user_preferences_sex",
+            joinColumns=@JoinColumn(name = "user_preferences_id"))
+    private Map<Sex, Double> sex;
 
     public UserPreferences() {
         species = new HashMap<>();
@@ -109,6 +151,52 @@ public class UserPreferences {
         age = new HashMap<>();
         temperament = new HashMap<>();
         health = new HashMap<>();
+        spayedNeutered = new HashMap<>();
+        sex = new HashMap<>();
+    }
+
+    public UserPreferences(
+            User u,
+            Map<Species, Double> spe,
+            Map<CatBreed, Double> cb,
+            Map<DogBreed, Double> db,
+            Map<Size, Double> si,
+            Map<FurColor, Double> fc,
+            Map<FurType, Double> ft,
+            Map<CoatLength, Double> cl,
+            Map<Integer, Double> a,
+            Map<Temperament, Double> t,
+            Map<Health, Double> h,
+            Map<SpayedNeutered, Double> spa,
+            Map<Sex, Double> se) {
+        this.user = u;
+        this.species = spe;
+        this.catBreed = cb;
+        this.dogBreed = db;
+        this.size = si;
+        this.furColor = fc;
+        this.furType = ft;
+        this.coatLength = cl;
+        this.age = a;
+        this.temperament = t;
+        this.health = h;
+        this.spayedNeutered = spa;
+        this.sex = se;
+    }
+
+    public void resetRatings() {
+        species.clear();
+        catBreed.clear();
+        dogBreed.clear();
+        size.clear();
+        furColor.clear();
+        furType.clear();
+        coatLength.clear();
+        age.clear();
+        temperament.clear();
+        health.clear();
+        spayedNeutered.clear();
+        sex.clear();
     }
 
     public Double getSpeciesRating(Species s) {
@@ -130,6 +218,8 @@ public class UserPreferences {
         }
     }
 
+    public void clearSpeciesRating() { species.clear(); }
+
     public Double getCatBreedRating(CatBreed c) {
         if (catBreed.containsKey(c)) {
             return catBreed.get(c);
@@ -148,6 +238,8 @@ public class UserPreferences {
             catBreed.put(c, value);
         }
     }
+
+    public void clearCatBreedRating() { catBreed.clear(); }
 
     public Double getDogBreedRating(DogBreed d) {
         if (dogBreed.containsKey(d)) {
@@ -168,26 +260,7 @@ public class UserPreferences {
         }
     }
 
-    /*
-    public Double getBreedRating(Breed b) {
-        if (breed.containsKey(b)) {
-            return breed.get(b);
-        }
-        return 0.0;
-    }
-
-    public void setBreedRating(Breed b, Double rating) {
-        breed.put(b, rating);
-    }
-
-    public void updateBreedRating(Breed b, Double value) {
-        if (breed.containsKey(b)) {
-            breed.put(b, (breed.get(b) + value));
-        } else {
-            breed.put(b, value);
-        }
-    }
-     */
+    public void clearDogBreedRating() { dogBreed.clear(); }
 
     public Double getSizeRating(Size s) {
         if (size.containsKey(s)) {
@@ -208,6 +281,8 @@ public class UserPreferences {
         }
     }
 
+    public void clearSizeRating() { size.clear(); }
+
     public Double getFurColorRating(FurColor fc) {
         if (furColor.containsKey(fc)) {
             return furColor.get(fc);
@@ -226,6 +301,8 @@ public class UserPreferences {
             furColor.put(fc, value);
         }
     }
+
+    public void clearFurColorRating() { furColor.clear(); }
 
     public Double getFurTypeRating(FurType ft) {
         if (furType.containsKey(ft)) {
@@ -246,6 +323,8 @@ public class UserPreferences {
         }
     }
 
+    public void clearFurTypeRating() { furType.clear(); }
+
     public Double getCoatLengthRating(CoatLength cl) {
         if (coatLength.containsKey(cl)) {
             return coatLength.get(cl);
@@ -264,6 +343,8 @@ public class UserPreferences {
             coatLength.put(cl, value);
         }
     }
+
+    public void clearCoatLengthRating() { coatLength.clear(); }
 
     public Double getAgeRating(int a) {
         if (age.containsKey(a)) {
@@ -284,6 +365,8 @@ public class UserPreferences {
         }
     }
 
+    public void clearAgeRating() { age.clear(); }
+
     public Double getTemperamentRating(Temperament t) {
         if (temperament.containsKey(t)) {
             return temperament.get(t);
@@ -303,6 +386,8 @@ public class UserPreferences {
         }
     }
 
+    public void clearTemperamentRating() { temperament.clear(); }
+
     public Double getHealthRating(Health h) {
         if (health.containsKey(h)) {
             return health.get(h);
@@ -321,4 +406,48 @@ public class UserPreferences {
             health.put(h, value);
         }
     }
+
+    public void clearHealthRating() { health.clear(); }
+
+    public Double getSpayedNeuteredRating(SpayedNeutered sn) {
+        if (spayedNeutered.containsKey(sn)) {
+            return spayedNeutered.get(sn);
+        }
+        return 0.0;
+    }
+
+    public void setSpayedNeuteredRating(SpayedNeutered sn, Double rating) {
+        spayedNeutered.put(sn, rating);
+    }
+
+    public void updateSpayedNeuteredRating(SpayedNeutered sn, Double value) {
+        if (spayedNeutered.containsKey(sn)) {
+            spayedNeutered.put(sn, (spayedNeutered.get(sn) + value));
+        } else {
+            spayedNeutered.put(sn, value);
+        }
+    }
+
+    public void clearSpayedNeuteredRating() { spayedNeutered.clear(); }
+
+    public Double getSexRating(Sex s) {
+        if (sex.containsKey(s)) {
+            return sex.get(s);
+        }
+        return 0.0;
+    }
+
+    public void setSexRating(Sex s, Double rating) {
+        sex.put(s, rating);
+    }
+
+    public void updateSexRating(Sex s, Double value) {
+        if (sex.containsKey(s)) {
+            sex.put(s, (sex.get(s) + value));
+        } else {
+            sex.put(s, value);
+        }
+    }
+
+    public void clearSexRating() { sex.clear(); }
 }

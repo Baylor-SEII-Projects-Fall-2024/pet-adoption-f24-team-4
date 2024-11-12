@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Card, CardContent, Typography, CircularProgress, Alert, Grid, Button, Avatar } from '@mui/material';
+import { Box, Card, Typography, CircularProgress, Alert, Grid, Button, Avatar } from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -13,24 +13,32 @@ export default function CenterPublicProfile() {
     const [error, setError] = useState(null);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
+    // Helper function to format text (capitalize and replace underscores with spaces)
+    const formatText = (text) => {
+        if (!text) return '';
+        return text
+            .toLowerCase()
+            .split('_')
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
 
     // Fetch Adoption Center details
     useEffect(() => {
         const fetchAdoptionCenter = async () => {
-                try {
-                    const response = await fetch(`${apiUrl}/adoption-centers/${adoptionID}`, {
-                    });
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    const data = await response.json();
-                    setAdoptionCenter(data);
-                } catch (error) {
-                    console.error('Error fetching adoption center:', error);
-                    setError('Adoption center not found.');
-                } finally {
-                    setLoading(false);
+            try {
+                const response = await fetch(`${apiUrl}/adoption-centers/${adoptionID}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
+                const data = await response.json();
+                setAdoptionCenter(data);
+            } catch (error) {
+                console.error('Error fetching adoption center:', error);
+                setError('Adoption center not found.');
+            } finally {
+                setLoading(false);
+            }
         };
         fetchAdoptionCenter();
     }, [adoptionID, apiUrl]);
@@ -38,20 +46,19 @@ export default function CenterPublicProfile() {
     // Fetch Pets for the Adoption Center
     useEffect(() => {
         const fetchPets = async () => {
-                try {
-                    const response = await fetch(`${apiUrl}/pets/${adoptionID}`, {
-                    });
-                    if (!response.ok) {
-                        throw new Error("Failed to fetch Pets");
-                    }
-                    const data = await response.json();
-                    setPets(data);
-                } catch (error) {
-                    console.error("Error fetching Pets:", error);
-                    setError("Failed to load Pets.");
-                } finally {
-                    setLoading(false);
+            try {
+                const response = await fetch(`${apiUrl}/pets/${adoptionID}`);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch Pets");
                 }
+                const data = await response.json();
+                setPets(data);
+            } catch (error) {
+                console.error("Error fetching Pets:", error);
+                setError("Failed to load Pets.");
+            } finally {
+                setLoading(false);
+            }
         };
         fetchPets();
     }, [adoptionID, apiUrl]);
@@ -82,9 +89,9 @@ export default function CenterPublicProfile() {
                 startIcon={<ArrowBackIcon />}
                 variant="outlined"
                 sx={{ marginBottom: 2, color: '#1976d2', borderColor: '#1976d2' }}
-                onClick={() => router.push('/')}
+                onClick={() => router.push('/ViewCenters')}
             >
-                Back to Home
+                Back
             </Button>
 
             <Card sx={{ boxShadow: 3, borderRadius: 4, padding: 3 }}>
@@ -133,18 +140,33 @@ export default function CenterPublicProfile() {
                                             <PetsIcon />
                                         </Avatar>
                                         <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                                            {pet.firstName} {pet.lastName}
+                                            {pet.name}
                                         </Typography>
                                     </Box>
 
                                     <Typography variant="body2" color="textSecondary">
-                                        Type: {pet.petType}
+                                        Species: {formatText(pet.species)}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                        Age: {pet.age} years
                                     </Typography>
                                     <Typography variant="body2" color="textSecondary">
                                         Weight: {pet.weight} lbs
                                     </Typography>
                                     <Typography variant="body2" color="textSecondary">
-                                        Fur Type: {pet.furType}
+                                        Size: {formatText(pet.petSize)}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                        Temperament: {pet.temperament?.map(formatText).join(', ')}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                        Health Status: {formatText(pet.healthStatus)}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                        Fur Type: {formatText(pet.furType)}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary">
+                                        Fur Color: {pet.furColor?.map(formatText).join(', ')}
                                     </Typography>
                                 </Card>
                             </Grid>

@@ -25,7 +25,9 @@ public class PetRequest {
     private int age;
     private Set<Temperament> temperament;
     private Health healthStatus;
-    private FurColor furColor;
+    private Set<FurColor> furColor;
+    private SpayedNeutered spayedNeutered;
+    private Sex sex;
 
     public PetRequest(){}
 
@@ -49,8 +51,10 @@ public class PetRequest {
         this.furType = EnumUtil.mapStringToFurType(furTypeStr);
     }
 
-    public void setFurColor(String furColorStr) {
-        this.furColor = EnumUtil.mapStringToFurColor(furColorStr);
+    public void setFurColor(Set<String> furColorStr) {
+        this.furColor = furColorStr.stream()
+                .map(EnumUtil::mapStringToFurColor)
+                .collect(Collectors.toSet());
     }
 
     public void setAdoptionId(Long adoptionId) {
@@ -85,5 +89,13 @@ public class PetRequest {
 
     public void setHealthStatus(String healthStatusStr) {
         this.healthStatus = EnumUtil.mapStringToHealth(healthStatusStr);
+    }
+
+    public void setSpayedNeutered(String spayedNeutered) {
+        this.spayedNeutered = EnumUtil.mapStringToSpayedNeutered(spayedNeutered);
+    }
+
+    public void setSex(String sex) {
+        this.sex = EnumUtil.mapStringToSex(sex);
     }
 }

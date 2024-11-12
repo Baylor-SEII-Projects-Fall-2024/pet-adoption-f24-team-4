@@ -2,6 +2,9 @@ package petadoption.api.event;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Data
 public class EventRequest {
     private Long adoptionID;
@@ -9,6 +12,6 @@ public class EventRequest {
     private String title;
     private String description;
     private String location;
-    private String startDateTime;
-    private String endDateTime;
+    private LocalDateTime startDateTime;
+    private LocalDateTime endDateTime;
 }

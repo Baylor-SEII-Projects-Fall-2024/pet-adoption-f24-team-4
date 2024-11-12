@@ -8,9 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import petadoption.api.adoptionCenter.AdoptionCenter;
 import petadoption.api.meeting.Meeting;
+import petadoption.api.meeting.MeetingRequest;
 import petadoption.api.meeting.MeetingService;
 import petadoption.api.pet.Pet;
+import petadoption.api.pet.PetRequest;
+import petadoption.api.user.User;
 
 @Log4j2
 @RestController
@@ -26,12 +30,13 @@ public class MeetingEndpoint {
         return meetingService.getAllMeetings();  // Fetch meetings from the service layer
     }
 
+
     @PostMapping("/add")
-    public ResponseEntity<Meeting> addEvent(@RequestBody Meeting request) {
+    public ResponseEntity<Meeting> addMeeting(@RequestBody MeetingRequest request) {
         try {
+
             Meeting m = new Meeting();
-            copyRequestToMeeting(request, m);
-            Meeting result = meetingService.saveMeeting(m);
+            Meeting result = meetingService.createAndSaveMeeting(request.getPetID(), request.getUserID(), request.getDate());
             log.info("Successfully saved meeting");
             return new ResponseEntity<>(result, HttpStatus.CREATED);
         } catch (Exception e) {

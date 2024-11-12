@@ -26,6 +26,8 @@ public class petGenerator {
         Health[] healthValues = Health.values();
         Size[] sizeValues = Size.values();
         Temperament[] temperamentValues = Temperament.values();
+        Sex[] sexValues = Sex.values();
+        SpayedNeutered[] spayedNeuteredValues = SpayedNeutered.values();
 
         for (int i = 0; i < count; i++) {
             Species randomSpecies = speciesValues[random.nextInt(speciesValues.length)];
@@ -35,6 +37,8 @@ public class petGenerator {
             Health randomHealth = healthValues[random.nextInt(healthValues.length)];
             Size randomSize = sizeValues[random.nextInt(sizeValues.length)];
             Temperament randomTemperament = temperamentValues[random.nextInt(temperamentValues.length)];
+            Sex randomSex = sexValues[random.nextInt(sexValues.length)];
+            SpayedNeutered randomSpayed = spayedNeuteredValues[random.nextInt(spayedNeuteredValues.length)];
 
 
             String randomBreed;
@@ -47,10 +51,12 @@ public class petGenerator {
             } else {
                 randomBreed = "Unknown Breed";
             }
-            System.out.println(randomSpecies.getDisplayName() + ", " + randomBreed + ", " +
-                    randomCoatLength.getDisplayName() + ", " + randomFurColor.getDisplayName() + ", " +
-                    randomFurType.getDisplayName() + ", " + randomHealth.getDisplayName() + ", " +
-                    randomSize.getDisplayName() + ", " + randomTemperament.getDisplayName());
+            System.out.println(randomSpecies.getDisplayName() + "," + randomBreed + "," +
+                    randomCoatLength.getDisplayName() + "," + randomFurColor.getDisplayName() + "," +
+                    randomFurType.getDisplayName() + "," + randomHealth.getDisplayName() + "," +
+                    randomSize.getDisplayName() + "," + randomTemperament.getDisplayName() + "," + randomSex.getDisplayName()
+                    + "," + randomSpayed.getDisplayName()
+            );
         }
     }
 }

@@ -81,6 +81,7 @@ function AdoptionNavBar() {
     handleCloseMenu();
   };
 
+
   if (loading) {
     return;
   }
@@ -93,52 +94,6 @@ function AdoptionNavBar() {
     return <div>User not found.</div>;
   }
 
-  const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => handleNavigation('/addPets')}>
-            <ListItemIcon>
-              <PetsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add Pets" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => handleNavigation('/modifyPet')}>
-            <ListItemIcon>
-              <GroupsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Modify Pets" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => handleNavigation('/modifyAdoptionCenter')}>
-            <ListItemIcon>
-              <ContactsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Modify Center Information" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => handleNavigation('/addEvent')}>
-            <ListItemIcon>
-              <AccountCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add Events" />
-          </ListItemButton>
-        </ListItem>
-      </List>
-    </Box>
-  );
-
   return (
     <main>
       <AppBar position="static" sx={{ padding: 2 }}>
@@ -150,9 +105,7 @@ function AdoptionNavBar() {
             style={{ width: 60, height: 60, cursor: 'pointer', marginRight: 25, marginLeft: -10 }}
           />
 
-          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={toggleDrawer(true)}>
-            <MenuIcon sx={{ fontSize: 30 }} />
-          </IconButton>
+
 
           <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', marginRight: 'auto' }}>
             Whisker Works
@@ -168,10 +121,6 @@ function AdoptionNavBar() {
             sx={{ marginLeft: 2, width: 65, height: 65 }}
             onClick={handleAvatarClick}
           />
-
-          <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
-            {list('left')}
-          </Drawer>
 
           <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
             <MenuItem onClick={handleLoginInfo}>Edit Account Information</MenuItem>

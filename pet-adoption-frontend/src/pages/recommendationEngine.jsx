@@ -56,7 +56,7 @@ export default function RecommendationEnginePage() {
 
         const petsData = await petsRes.json();
         const formattedPets = petsData.map(pet => {
-          const imageUrl = pet.profilePicture 
+          const imageUrl = pet.profilePicture?.imageData 
             ? `data:image/png;base64,${pet.profilePicture.imageData}` 
             : '/petImages/DEFAULT_IMG-612x612.jpg'; // Fallback to default image if no profilePicture
           return {
@@ -72,7 +72,7 @@ export default function RecommendationEnginePage() {
             temperament: pet.temperament.map(temp => formatOption(temp)),
             dogBreed: pet.dogBreed ? pet.dogBreed.map(breed => formatOption(breed)) : [],
             catBreed: pet.catBreed ? pet.catBreed.map(breed => formatOption(breed)) : [],
-            profilePictureUrl: pet.profilePicture ? URL.createObjectURL(pet.profilePicture) : imageUrl, // Create URL if it's a Blob
+            profilePictureUrl: imageUrl,
             adoptionCenter: pet.center.centerName,
           };
         });

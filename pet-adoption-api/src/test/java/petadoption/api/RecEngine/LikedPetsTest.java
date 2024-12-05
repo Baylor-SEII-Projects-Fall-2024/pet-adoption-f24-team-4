@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("testdb") // Use H2 in-memory database for testing
-class LikedPetServiceTests {
+class LikedPetsTest {
 
     @Autowired
     private LikedPetService likedPetService;

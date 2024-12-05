@@ -47,8 +47,7 @@ body {
 }
 .card-container {
   
-  display: flex; /* Establishes a flex container */
-  
+  display: flex;
 }
 
 .check-container {
@@ -56,12 +55,13 @@ body {
   margin-top: 10px;
 }
 .fixed-card {
-  position: fixed; /* Fix the position relative to the viewport */
+  position: absolute;
   top: 100px;
+  z-index: 5;
   justify-content: flex-start;
   overflow-x: auto;
   width: 245px; /* Set a fixed width for the fixed card */
-  height: 100vh; /* Full viewport height */
+ /* Full viewport height */
   max-width:100%;    
   background-color: #f8f9fa; /* Light background for visibility */
   padding: 20px; /* Padding for internal spacing */

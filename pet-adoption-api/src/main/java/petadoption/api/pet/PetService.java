@@ -90,6 +90,8 @@ public class PetService {
         Set<CatBreed> catBreeds = new HashSet<>();
         Set<Temperament> temperaments = new HashSet<>();
         temperaments.add(Temperament.ACTIVE);
+        temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.ATHLETIC);
         Set<FurColor> colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BRONZE);
@@ -120,6 +122,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ACTIVE);
+        temperaments.add(Temperament.SOCIABLE);
+        temperaments.add(Temperament.FRIENDLY);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BRONZE);
@@ -148,6 +152,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.BOSSY);
+        temperaments.add(Temperament.ANXIOUS);
         colors = new HashSet<>();
         colors.add(FurColor.GREY);
         colors.add(FurColor.WHITE);
@@ -173,6 +179,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ADAPTABLE);
+        temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.CALM);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
 
@@ -197,6 +205,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.LOYAL);
+        temperaments.add(Temperament.REACTIVE);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BROWN);
@@ -223,6 +233,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.PASSIVE);
+        temperaments.add(Temperament.EASY_GOING);
+        temperaments.add(Temperament.EXCITABLE);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
 
@@ -249,6 +261,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.CURIOUS);
         colors = new HashSet<>();
         colors.add(FurColor.WHITE);
         colors.add(FurColor.BROWN);
@@ -276,6 +290,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGILE);
+        temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.CURIOUS);
         colors = new HashSet<>();
         colors.add(FurColor.WHITE);
         colors.add(FurColor.GREY);
@@ -304,6 +320,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ACTIVE);
+        temperaments.add(Temperament.PLAYFUL);
+        temperaments.add(Temperament.LOYAL);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
 
@@ -332,6 +350,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.ACTIVE);
+        temperaments.add(Temperament.DEPENDENT);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
         colors.add(FurColor.WHITE);
@@ -356,8 +376,11 @@ public class PetService {
         dogBreeds = new HashSet<>();
         catBreeds = new HashSet<>();
         catBreeds.add(CatBreed.SIAMESE);
+
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ACTIVE);
+        temperaments.add(Temperament.SOCIABLE);
+        temperaments.add(Temperament.EVEN_TEMPERED);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.WHITE);
@@ -386,6 +409,7 @@ public class PetService {
         catBreeds.add(CatBreed.DOMESTIC_SHORTHAIR);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ACTIVE);
+        temperaments.add(Temperament.EASY_GOING);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BROWN);
@@ -414,6 +438,8 @@ public class PetService {
         catBreeds.add(CatBreed.DOMESTIC_SHORTHAIR);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.ANXIOUS);
+        temperaments.add(Temperament.EASILY_TRAINED);
         colors = new HashSet<>();
         colors.add(FurColor.GREY);
 
@@ -439,6 +465,9 @@ public class PetService {
         catBreeds.add(CatBreed.DOMESTIC_SHORTHAIR);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AFFECTIONATE);
+        temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.LOYAL);
+        temperaments.add(Temperament.CURIOUS);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.WHITE);
@@ -464,6 +493,8 @@ public class PetService {
         catBreeds.add(CatBreed.AMERICAN_BOBTAIL);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.BOSSY);
+        temperaments.add(Temperament.BOLD);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
 
@@ -490,6 +521,8 @@ public class PetService {
         catBreeds.add(CatBreed.AMERICAN_CURL);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.PASSIVE);
+        temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.INTELLIGENT);
         colors = new HashSet<>();
         colors.add(FurColor.WHITE);
 
@@ -517,6 +550,8 @@ public class PetService {
         catBreeds.add(CatBreed.DEVON_REX);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.ADAPTABLE);
+        temperaments.add(Temperament.ALOOF);
         colors = new HashSet<>();
         colors.add(FurColor.WHITE);
         colors.add(FurColor.GREY);
@@ -544,6 +579,9 @@ public class PetService {
         catBreeds.add(CatBreed.MAINE_COON);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGILE);
+        temperaments.add(Temperament.EASILY_TRAINED);
+        temperaments.add(Temperament.BOLD);
+        temperaments.add(Temperament.INTELLIGENT);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
 
@@ -572,6 +610,8 @@ public class PetService {
         catBreeds.add(CatBreed.SIAMESE);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.POSSESSIVE);
+        temperaments.add(Temperament.INTELLIGENT);
+        temperaments.add(Temperament.INTROVERTED);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
 
@@ -600,6 +640,9 @@ public class PetService {
         catBreeds.add(CatBreed.TURKISH_ANGORA);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ALOOF);
+        temperaments.add(Temperament.DEPENDENT);
+        temperaments.add(Temperament.LOYAL);
+        temperaments.add(Temperament.CURIOUS);
         colors = new HashSet<>();
         colors.add(FurColor.WHITE);
 
@@ -628,6 +671,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.PASSIVE);
+        temperaments.add(Temperament.INTELLIGENT);
+        temperaments.add(Temperament.CHILL);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BROWN);
@@ -658,6 +703,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AFFECTIONATE);
+        temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.ENERGETIC);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.WHITE);
@@ -686,6 +733,9 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.IMPULSIVE);
+        temperaments.add(Temperament.EASILY_TRAINED);
+        temperaments.add(Temperament.CURIOUS);
+        temperaments.add(Temperament.ANXIOUS);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BROWN);
@@ -712,6 +762,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ADAPTABLE);
+        temperaments.add(Temperament.EVEN_TEMPERED);
+        temperaments.add(Temperament.REACTIVE);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BROWN);
@@ -738,6 +790,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ALOOF);
+        temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.SUBMISSIVE);
         colors = new HashSet<>();
 
 
@@ -763,6 +817,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.AFFECTIONATE);
         colors = new HashSet<>();
         colors.add(FurColor.WHITE);
 
@@ -789,6 +845,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.CURIOUS);
+        temperaments.add(Temperament.ANXIOUS);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
 
@@ -815,6 +873,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGILE);
+        temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.INTELLIGENT);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
 
@@ -842,6 +902,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.POSSESSIVE);
+        temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.DEMANDING);
         colors = new HashSet<>();
         colors.add(FurColor.GREY);
         colors.add(FurColor.BROWN);
@@ -870,6 +932,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.PASSIVE);
+        temperaments.add(Temperament.EVEN_TEMPERED);
+        temperaments.add(Temperament.EASILY_TRAINED);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BROWN);
@@ -896,6 +960,8 @@ public class PetService {
         catBreeds.add(CatBreed.NORWEGIAN_FOREST_CAT);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.BOLD);
+        temperaments.add(Temperament.PASSIVE);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.WHITE);
@@ -924,6 +990,9 @@ public class PetService {
         catBreeds.add(CatBreed.SCOTTISH_FOLD);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ANXIOUS);
+        temperaments.add(Temperament.BOLD);
+        temperaments.add(Temperament.DEMANDING);
+        temperaments.add(Temperament.REACTIVE);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
 
@@ -951,6 +1020,8 @@ public class PetService {
         catBreeds.add(CatBreed.SPHYNX);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ANXIOUS);
+        temperaments.add(Temperament.DEMANDING);
+        temperaments.add(Temperament.BOLD);
         colors = new HashSet<>();
 
 
@@ -975,6 +1046,8 @@ public class PetService {
         catBreeds.add(CatBreed.SINGAPURA);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AFFECTIONATE);
+        temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.INTROVERTED);
         colors = new HashSet<>();
         colors.add(FurColor.WHITE);
         colors.add(FurColor.BROWN);
@@ -1000,6 +1073,8 @@ public class PetService {
         catBreeds.add(CatBreed.RUSSIAN_BLUE);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ATHLETIC);
+        temperaments.add(Temperament.CURIOUS);
+        temperaments.add(Temperament.DEPENDENT);
         colors = new HashSet<>();
         colors.add(FurColor.BLUE);
 
@@ -1025,6 +1100,8 @@ public class PetService {
         catBreeds.add(CatBreed.BRITISH_SHORTHAIR);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.BOLD);
+        temperaments.add(Temperament.DEMANDING);
+        temperaments.add(Temperament.EVEN_TEMPERED);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.WHITE);
@@ -1052,6 +1129,8 @@ public class PetService {
         catBreeds.add(CatBreed.BOMBAY);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.SOCIABLE);
+        temperaments.add(Temperament.EASY_GOING);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
 
@@ -1079,6 +1158,8 @@ public class PetService {
         catBreeds.add(CatBreed.BENGAL);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.PASSIVE);
+        temperaments.add(Temperament.SOCIABLE);
+        temperaments.add(Temperament.POSSESSIVE);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
         colors.add(FurColor.BROWN);
@@ -1107,6 +1188,8 @@ public class PetService {
         catBreeds.add(CatBreed.CHAUSIE);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.POSSESSIVE);
+        temperaments.add(Temperament.BOLD);
+        temperaments.add(Temperament.CALM);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
 
@@ -1134,6 +1217,8 @@ public class PetService {
         catBreeds.add(CatBreed.EGYPTIAN_MAU);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.SUBMISSIVE);
+        temperaments.add(Temperament.ANXIOUS);
+        temperaments.add(Temperament.DEPENDENT);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.WHITE);
@@ -1160,6 +1245,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ACTIVE);
+        temperaments.add(Temperament.PLAYFUL);
+        temperaments.add(Temperament.FRIENDLY);
         colors = new HashSet<>();
         colors.add(FurColor.GRAY);
         colors.add(FurColor.WHITE);
@@ -1186,7 +1273,9 @@ public class PetService {
         dogBreeds.add(DogBreed.BASENJI);
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
+        temperaments.add(Temperament.REACTIVE);
         temperaments.add(Temperament.ATHLETIC);
+        temperaments.add(Temperament.BOLD);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
         colors.add(FurColor.WHITE);
@@ -1214,7 +1303,9 @@ public class PetService {
         dogBreeds.add(DogBreed.AUSTRALIAN_SHEPHERD);
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
-        temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.PLAYFUL);
+        temperaments.add(Temperament.DEPENDENT);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BROWN);
@@ -1242,6 +1333,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.CALM);
         colors = new HashSet<>();
         colors.add(FurColor.GRAY);
 
@@ -1266,6 +1359,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.PLAYFUL);
+        temperaments.add(Temperament.EVEN_TEMPERED);
         colors = new HashSet<>();
         colors.add(FurColor.DARK);
         colors.add(FurColor.BROWN);
@@ -1292,6 +1387,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.PASSIVE);
+        temperaments.add(Temperament.INTELLIGENT);
+        temperaments.add(Temperament.INDEPENDENT);
         colors = new HashSet<>();
         colors.add(FurColor.WHITE);
 
@@ -1319,6 +1416,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.PLAYFUL);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BROWN);
@@ -1346,6 +1445,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ATHLETIC);
+        temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.DEMANDING);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.GREY);
@@ -1374,6 +1475,10 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.KID_FRIENDLY);
+        temperaments.add(Temperament.INTELLIGENT);
+        temperaments.add(Temperament.ENERGETIC);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BRONZE);
@@ -1403,6 +1508,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.PLAYFUL);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BRONZE);
@@ -1429,6 +1536,8 @@ public class PetService {
         catBreeds.add(CatBreed.KORAT);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ANXIOUS);
+        temperaments.add(Temperament.CURIOUS);
+        temperaments.add(Temperament.PLACID);
         colors = new HashSet<>();
         colors.add(FurColor.GREY);
 
@@ -1457,6 +1566,8 @@ public class PetService {
         catBreeds.add(CatBreed.HIMALAYAN);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ALOOF);
+        temperaments.add(Temperament.DEPENDENT);
+        temperaments.add(Temperament.CHILL);
         colors = new HashSet<>();
         colors.add(FurColor.WHITE);
         colors.add(FurColor.BRONZE);
@@ -1485,6 +1596,8 @@ public class PetService {
         catBreeds.add(CatBreed.HAVANA_BROWN);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ALOOF);
+        temperaments.add(Temperament.DEPENDENT);
+        temperaments.add(Temperament.TIMID);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
 
@@ -1510,6 +1623,8 @@ public class PetService {
         catBreeds.add(CatBreed.DOMESTIC_LONGHAIR);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.EXCITABLE);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BRONZE);
@@ -1535,6 +1650,7 @@ public class PetService {
         catBreeds.add(CatBreed.MANX);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.PLAYFUL);
+        temperaments.add(Temperament.POSSESSIVE);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BRONZE);
@@ -1561,6 +1677,8 @@ public class PetService {
         catBreeds.add(CatBreed.OCICAT);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.INTELLIGENT);
+        temperaments.add(Temperament.KID_FRIENDLY);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BRONZE);
@@ -1588,6 +1706,8 @@ public class PetService {
         catBreeds.add(CatBreed.PIXIE_BOB);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.CURIOUS);
+        temperaments.add(Temperament.IMPULSIVE);
+        temperaments.add(Temperament.FOCUSED);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
 
@@ -1614,6 +1734,8 @@ public class PetService {
         catBreeds.add(CatBreed.RAGAMUFFIN);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.DEMANDING);
         colors = new HashSet<>();
         colors.add(FurColor.GREY);
         colors.add(FurColor.BLACK);
@@ -1642,6 +1764,8 @@ public class PetService {
         catBreeds.add(CatBreed.SNOWSHOE);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.BOLD);
+        temperaments.add(Temperament.FOCUSED);
+        temperaments.add(Temperament.VOCAL);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.WHITE);
@@ -1671,6 +1795,9 @@ public class PetService {
         catBreeds.add(CatBreed.SINGAPURA);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.DEPENDENT);
+        temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.EASY_GOING);
+        temperaments.add(Temperament.INTROVERTED);
         colors = new HashSet<>();
         colors.add(FurColor.WHITE);
 
@@ -1698,6 +1825,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.SOCIABLE);
+        temperaments.add(Temperament.BOLD);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
 
@@ -1726,6 +1855,9 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AFFECTIONATE);
+        temperaments.add(Temperament.KID_FRIENDLY);
+        temperaments.add(Temperament.POSSESSIVE);
+        temperaments.add(Temperament.EXCITABLE);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
         colors.add(FurColor.WHITE);
@@ -1754,6 +1886,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.EVEN_TEMPERED);
+        temperaments.add(Temperament.FOCUSED);
+        temperaments.add(Temperament.INSISTENT);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
 
@@ -1778,6 +1912,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.PLAYFUL);
+        temperaments.add(Temperament.KID_FRIENDLY);
+        temperaments.add(Temperament.CHILL);
         colors = new HashSet<>();
         colors.add(FurColor.GREY);
 
@@ -1802,6 +1938,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.CURIOUS);
+        temperaments.add(Temperament.LOYAL);
+        temperaments.add(Temperament.BOLD);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
         colors.add(FurColor.WHITE);
@@ -1828,6 +1966,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.ENERGETIC);
+        temperaments.add(Temperament.EASILY_TRAINED);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
         colors.add(FurColor.LIGHT);
@@ -1855,6 +1995,9 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AFFECTIONATE);
+        temperaments.add(Temperament.BOLD);
+        temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.REACTIVE);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BRONZE);
@@ -1882,6 +2025,8 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.BOSSY);
+        temperaments.add(Temperament.DEMANDING);
+        temperaments.add(Temperament.LIVELY);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
         colors.add(FurColor.WHITE);
@@ -1910,6 +2055,9 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.EASILY_TRAINED);
+        temperaments.add(Temperament.LOYAL);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
         colors.add(FurColor.WHITE);
@@ -1938,6 +2086,9 @@ public class PetService {
         catBreeds = new HashSet<>();
         temperaments = new HashSet<>();
         temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.KID_FRIENDLY);
+        temperaments.add(Temperament.CUDDLY);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
         colors.add(FurColor.WHITE);
@@ -1964,6 +2115,8 @@ public class PetService {
         catBreeds.add(CatBreed.SELKIRK_REX);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.BOLD);
+        temperaments.add(Temperament.DEPENDENT);
+        temperaments.add(Temperament.DOCILE);
         colors = new HashSet<>();
         colors.add(FurColor.GREY);
         colors.add(FurColor.WHITE);
@@ -1992,6 +2145,8 @@ public class PetService {
         catBreeds.add(CatBreed.TONKINESE);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ANXIOUS);
+        temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.LOYAL);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
 
@@ -2019,6 +2174,8 @@ public class PetService {
         catBreeds.add(CatBreed.TURKISH_VAN);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.LOYAL);
+        temperaments.add(Temperament.PLAYFUL);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
         colors.add(FurColor.WHITE);
@@ -2044,6 +2201,8 @@ public class PetService {
         catBreeds.add(CatBreed.SOMALI);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.ANXIOUS);
+        temperaments.add(Temperament.VOCAL);
+        temperaments.add(Temperament.IMPULSIVE);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
 
@@ -2068,6 +2227,8 @@ public class PetService {
         catBreeds.add(CatBreed.TOYGER);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.DEPENDENT);
+        temperaments.add(Temperament.TIMID);
+        temperaments.add(Temperament.PLACID);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.BRONZE);
@@ -2094,6 +2255,8 @@ public class PetService {
         catBreeds.add(CatBreed.TUXEDO);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.SOCIABLE);
+        temperaments.add(Temperament.INTELLIGENT);
+        temperaments.add(Temperament.EVEN_TEMPERED);
         colors = new HashSet<>();
         colors.add(FurColor.BLACK);
         colors.add(FurColor.WHITE);
@@ -2121,6 +2284,9 @@ public class PetService {
         catBreeds.add(CatBreed.LYKOI);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.AGGRESSIVE);
+        temperaments.add(Temperament.DEPENDENT);
+        temperaments.add(Temperament.REACTIVE);
+        temperaments.add(Temperament.ACTIVE);
         colors = new HashSet<>();
         colors.add(FurColor.GREY);
 
@@ -2147,6 +2313,8 @@ public class PetService {
         catBreeds.add(CatBreed.EUROPEAN_BURMERSE);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.CURIOUS);
+        temperaments.add(Temperament.FRIENDLY);
+        temperaments.add(Temperament.BOLD);
         colors = new HashSet<>();
         colors.add(FurColor.BRONZE);
 
@@ -2175,6 +2343,9 @@ public class PetService {
         catBreeds.add(CatBreed.NEBELUNG);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.CALM);
+        temperaments.add(Temperament.BOLD);
+        temperaments.add(Temperament.FOCUSED);
+        temperaments.add(Temperament.AFFECTIONATE);
         colors = new HashSet<>();
         colors.add(FurColor.GREY);
 
@@ -2202,6 +2373,9 @@ public class PetService {
         catBreeds.add(CatBreed.ORIENTAL);
         temperaments = new HashSet<>();
         temperaments.add(Temperament.SUBMISSIVE);
+        temperaments.add(Temperament.INTELLIGENT);
+        temperaments.add(Temperament.INTROVERTED);
+        temperaments.add(Temperament.DEMANDING);
         colors = new HashSet<>();
         colors.add(FurColor.BROWN);
         colors.add(FurColor.WHITE);

@@ -1,13 +1,18 @@
-# Builder stage: ARM-compatible Gradle + JDK 17
-FROM arm32v7/gradle:8.4.0-jdk17 AS build
-WORKDIR /build
+# Use Eclipse Temurin Java 17 base image (ARM-compatible)
+FROM eclipse-temurin:17-jdk-jammy
+
+# Set working directory
+WORKDIR /app
+
+# Copy build files into image
 COPY . .
 
-RUN ./gradlew clean build --no-daemon -p .
+# (Optional) If your build requires JAVA_HOME explicitly
+ENV JAVA_HOME=/opt/java/openjdk
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
-# Runtime stage: ARM-compatible JDK 17
-FROM eclipse-temurin:17-jdk
-WORKDIR /app
-COPY --from=build /build/build/libs/pet-adoption-api-1.0.0-SNAPSHOT.jar app.jar
+# Build the app (adjust for Maven or Gradle)
+RUN ./mvnw clean package
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Run the app
+CMD ["java", "-jar", "target/pet-adoption-api.jar"]

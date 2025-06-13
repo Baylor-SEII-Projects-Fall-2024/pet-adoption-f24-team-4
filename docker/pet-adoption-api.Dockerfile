@@ -1,20 +1,20 @@
-# 1) Build stage using an ARM-compatible Java 17 JDK
+# 1) Build stage: compile & package without running tests
 FROM eclipse-temurin:17-jdk-focal AS build
-
 WORKDIR /app
+
+# Copy source & make the wrapper executable
 COPY . .
+RUN chmod +x ./gradlew
 
-# Ensure the Gradle wrapper is executable and build the app
-RUN chmod +x ./gradlew \
- && ./gradlew clean build --no-daemon -x test
+# Build the JAR (skip tests so it can complete in CI/Docker)
+RUN ./gradlew clean build --no-daemon -x test
 
-# 2) Runtime stage using the slimmer Java 17 JRE
+# 2) Runtime stage: slim JRE + your packaged JAR
 FROM eclipse-temurin:17-jre-focal
-
 WORKDIR /app
 
-# Copy the fat JAR from the build stage
-COPY --from=build /app/build/libs/pet-adoption-api.jar .
+# Copy the exact JAR produced by Gradle, and rename it for consistency
+COPY --from=build /app/build/libs/pet-adoption-api-1.0.0-SNAPSHOT.jar ./app.jar
 
-# Launch the application
-ENTRYPOINT ["java", "-jar", "pet-adoption-api.jar"]
+# Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]

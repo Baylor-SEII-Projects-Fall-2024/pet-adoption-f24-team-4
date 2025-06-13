@@ -1,18 +1,14 @@
-# Use Eclipse Temurin Java 17 base image (ARM-compatible)
 FROM eclipse-temurin:17-jdk-jammy
-
-# Set working directory
 WORKDIR /app
 
-# Copy build files into image
+# copy everything
 COPY . .
 
-# (Optional) If your build requires JAVA_HOME explicitly
-ENV JAVA_HOME=/opt/java/openjdk
-ENV PATH="${JAVA_HOME}/bin:${PATH}"
+# make sure the Gradle wrapper is executable
+RUN chmod +x ./gradlew
 
-# Build the app (adjust for Maven or Gradle)
-RUN ./mvnw clean package
+# build with Gradle
+RUN ./gradlew clean build --no-daemon
 
-# Run the app
-CMD ["java", "-jar", "target/pet-adoption-api.jar"]
+# run the resulting JAR
+CMD ["java", "-jar", "build/libs/pet-adoption-api.jar"]
